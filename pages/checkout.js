@@ -6,6 +6,11 @@ import { FaLongArrowAltLeft } from "react-icons/fa"
 import Link from "next/link"
 import Image from "../components/Image"
 import { v4 as uuid } from "uuid"
+import React from "react";
+import connectWallet from "../components/Metamask"
+
+
+
 
 import {
   CardElement,
@@ -14,6 +19,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
+
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -32,6 +38,8 @@ function CheckoutWithContext(props) {
     </ContextProviderComponent>
   )
 }
+
+
 
 const calculateShipping = () => {
   return 0
@@ -141,13 +149,13 @@ const Checkout = ({ context }) => {
       >
         <div className="pt-10 pb-8">
           <h1 className="text-5xl font-light mb-6">Checkout</h1>
-          <Link href="/cart">
-            <a aria-label="Cart">
-              <div className="cursor-pointer flex  items-center">
-                <FaLongArrowAltLeft className="mr-2 text-gray-600" />
-                <p className="text-gray-600 text-sm">Edit Cart</p>
-              </div>
-            </a>
+          <Link href="/cart" aria-label="Cart">
+
+            <div className="cursor-pointer flex  items-center">
+              <FaLongArrowAltLeft className="mr-2 text-gray-600" />
+              <p className="text-gray-600 text-sm">Edit Cart</p>
+            </div>
+
           </Link>
         </div>
 
@@ -181,55 +189,7 @@ const Checkout = ({ context }) => {
             <div className="flex flex-1 flex-col md:flex-row">
               <div className="flex flex-1 pt-8 flex-col">
                 <div className="mt-4 border-t pt-10">
-                  <form onSubmit={handleSubmit}>
-                    {errorMessage ? <span>{errorMessage}</span> : ""}
-                    <Input
-                      onChange={onChange}
-                      value={input.name}
-                      name="name"
-                      placeholder="Cardholder name"
-                    />
-                    <CardElement className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-                    <Input
-                      onChange={onChange}
-                      value={input.email}
-                      name="email"
-                      placeholder="Email"
-                    />
-                    <Input
-                      onChange={onChange}
-                      value={input.street}
-                      name="street"
-                      placeholder="Street"
-                    />
-                    <Input
-                      onChange={onChange}
-                      value={input.city}
-                      name="city"
-                      placeholder="City"
-                    />
-                    <Input
-                      onChange={onChange}
-                      value={input.state}
-                      name="state"
-                      placeholder="State"
-                    />
-                    <Input
-                      onChange={onChange}
-                      value={input.postal_code}
-                      name="postal_code"
-                      placeholder="Postal Code"
-                    />
-                    <button
-                      type="submit"
-                      disabled={!stripe}
-                      onClick={handleSubmit}
-                      className="hidden md:block bg-primary hover:bg-black text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-                      type="button"
-                    >
-                      Confirm order
-                    </button>
-                  </form>
+                  
                 </div>
               </div>
               <div className="md:pt-20">
@@ -249,24 +209,33 @@ const Checkout = ({ context }) => {
                   <p className="text-sm pr-10">Total</p>
                   <p className="font-semibold w-38 flex justify-end">
                     {DENOMINATION + (total + calculateShipping())}
-                  </p>
+                  </p>                 
                 </div>
-                <button
-                  type="submit"
-                  disabled={!stripe}
-                  onClick={handleSubmit}
-                  className="md:hidden bg-primary hover:bg-black text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Confirm order
-                </button>
               </div>
             </div>
+            <button
+                      
+                      className="sendEthButton text-sm tracking-wider bg-green hover:bg-black text-black font-semibold hover:text-white py-4 px-12 border-2 border-black hover:border-green"
+                      onClick={connectWallet}
+                      // className="  hover:bg-black text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
+                      // type="button"
+                      
+                    >
+                      Pay with token
+              </button>
+
+                    
           </div>
+          
         )}
+      
       </div>
     </div>
-  )
+  );
 }
+
+
+
+
 
 export default CheckoutWithContext
