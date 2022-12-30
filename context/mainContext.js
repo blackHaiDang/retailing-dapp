@@ -107,5 +107,6 @@ class ContextProviderComponent extends React.Component {
 
 export {
   SiteContext,
-  ContextProviderComponent
+  ContextProviderComponent,
+  calculateTotal
 }

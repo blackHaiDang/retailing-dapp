@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
     "autoprefixer": "^10.1.0",
+    "ethereumjs-tx": "^2.1.2",
     "next": "10.0.4",
     "postcss": "^8.1.0",
     "react": "17.0.1",

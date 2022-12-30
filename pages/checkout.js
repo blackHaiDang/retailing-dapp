@@ -217,12 +217,13 @@ const Checkout = ({ context }) => {
                       
                       className="sendEthButton text-sm tracking-wider bg-green hover:bg-black text-black font-semibold hover:text-white py-4 px-12 border-2 border-black hover:border-green"
                       onClick={connectWallet}
-                      // className="  hover:bg-black text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-                      // type="button"
+              
                       
                     >
                       Pay with token
               </button>
+
+
 
                     
           </div>
