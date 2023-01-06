@@ -8,6 +8,7 @@ import Image from "../components/Image"
 import { v4 as uuid } from "uuid"
 import React from "react";
 import connectWallet from "../components/Metamask"
+import tx from '../components/transaction'
 
 
 
@@ -216,7 +217,7 @@ const Checkout = ({ context }) => {
             <button
                       
                       className="sendEthButton text-sm tracking-wider bg-green hover:bg-black text-black font-semibold hover:text-white py-4 px-12 border-2 border-black hover:border-green"
-                      onClick={connectWallet}
+                      onClick={tx}
               
                       
                     >

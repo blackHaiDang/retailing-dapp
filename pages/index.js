@@ -17,7 +17,8 @@ const Home = ({ inventoryData = [], categories: categoryData = [] }) => {
           <meta name="description" content="Jamstack ECommerce Next provides a way to quickly get up and running with a fully configurable ECommerce site using Next.js." />
           <meta property="og:title" content="Jamstack ECommerce" key="title" />
         </Head>
-        <button onClick={tx}>TX</button>
+    
+        <button onClick={tx}>TX</button> 
         <div className="bg-blue-300
         p-6 pb-10 smpb-6
         flex lg:flex-row flex-col">
